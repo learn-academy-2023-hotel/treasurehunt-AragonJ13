@@ -1,5 +1,6 @@
-import React, { useState } from "react"
-import "./App.css"
+import React, { useState } from "react";
+import Square from "./components/Square";
+import "./App.css";
 
 const App = () => {
   const [board, setBoard] = useState([
@@ -11,14 +12,20 @@ const App = () => {
     "?",
     "?",
     "?",
-    "?"
-  ])
+    "?",
+  ]);
 
   return (
     <>
       <h1>Treasure Hunt Game</h1>
+      <div className="board">
+        {board.map((value, index) => {
+          console.log(value, index)
+          return <Square value={value}/>;
+        })}
+      </div>
     </>
-  )
-}
+  );
+};
 
-export default App
+export default App;
