@@ -15,10 +15,35 @@ const App = () => {
     "?",
   ])
 
-  const handleSquareClick = (clickedSquareIndex) => {
-    alert(clickedSquareIndex)
 
+  const [treasureLocation, setTreasureLocation] = useState(Math.floor(Math.random() * board.length))
+
+  const [bombLocation, setBombLocation] =
+  useState(Math.floor(Math.random() * board.length))
+  
+
+
+  const handleSquareClick = (clickedSquareIndex) => {
+    let updatedBoard = [...board]
+    // set condition for if treasure location is same as clikced squares index show treasure
+    if(clickedSquareIndex === treasureLocation) {
+      // then reassign state value at the index to treasure emoji
+      updatedBoard[clickedSquareIndex] = "🍄"
+      //setBoard(updatedBoard)
+    } else if (clickedSquareIndex === bombLocation) {
+      updatedBoard[clickedSquareIndex] = "🦝"
+      //setBoard(updatedBoard)
+    } else {
+      //use index from clickedSquareIndex to update the clicked squares 
+      updatedBoard[clickedSquareIndex] = "🌲"
+      //update state with the new board
+      
   }
+  setBoard(updatedBoard)
+}
+    
+    
+    
 
   return (
     <>
